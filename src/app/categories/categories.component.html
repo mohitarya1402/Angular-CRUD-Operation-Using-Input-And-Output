@@ -1,0 +1,49 @@
+<div class="row">
+  <ng-container *ngIf="btnShowCondition">
+  <div class="col-lg-12">
+  <button class="btn btn-danger float-end my-3 px-3" (click)="onClickOpenForm()">Add Person</button>
+  </div>
+  </ng-container>
+  <!-- <button class="btn btn-danger float-end my-3 mx-3 px-3" (click)="onClickOpenTable()">Show Person</button> -->
+<div class="col-lg-4">
+<ng-container *ngIf="formConditionTrue">
+<app-add-category (categoryAdd)="onCategoryAdd($event)" (showTableCondition)="onclickAddButton($event)" (showFormCondition)="onclickAddButtonHideform($event)"></app-add-category> <!-- first component calling -->
+</ng-container>
+</div>
+<div class="col-lg-12">
+<ng-container *ngIf="tableConditionTrue">
+<table class="table">
+  <thead>
+    <tr class="text-center">
+      <th scope="col">ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Contact</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr  class="text-center"
+    *ngFor="let category of categories;let i =index"
+        app-single-category
+        (personSelected)="onPersonSelected($event)"
+        (hideTable)="hideTableFunction($event)"
+        [category]="category"
+        (showViewBox)="showViewBoxFunction($event)"
+        (showEditBox)="showEditBoxFunction($event)"
+        (personEdit)="onPersonEdited($event)"
+        (personDelete)="onPersonDelete($event)"
+
+    >
+    </tr> <!--second component calling -->
+  </tbody>
+</table>
+</ng-container>
+<ng-container *ngIf="showViewBoxCondition">
+  <app-view-component  *ngIf="personSelected"  [person]="personSelected"    (showTable)="showTableAfterView($event)"></app-view-component>
+</ng-container>
+<ng-container *ngIf="showEditBoxConditon" >
+  <app-edit-component  *ngIf="personEdit" [editperson]="personEdit" (showTable)="showTableAfterEdit($event)"  
+  (personUpdated)="onUpdatePerson($event)" (showAddButton)="showaddButton($event)" ></app-edit-component>
+</ng-container>
+</div>
+</div>

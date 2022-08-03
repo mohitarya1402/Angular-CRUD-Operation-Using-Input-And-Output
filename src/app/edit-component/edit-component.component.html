@@ -1,0 +1,11 @@
+<p>Update Person details</p>
+<div class="col-md-6">
+  <div class=" border p-3">
+    <!-- <div class=""><span class="personLable">ID: </span><span class="form-control personDataStyle"> {{editperson.id}} </span></div> -->
+
+    <div class=""><span class="personLable">Name: </span><input class="form-control personDataStyle" [(ngModel)]="id"></div>
+    <div class=""><span class="personLable">Name: </span><input class="form-control personDataStyle" [(ngModel)]="name"></div>
+    <div class=""><span class="personLable">Contact: </span><input class="form-control personDataStyle"  [(ngModel)]="contact"></div>
+    <button class="btn btn-dark  m-2" (click)="onClickUpdateDeatils()">Update</button> <button class="btn btn-danger  m-2" (click)="onClickEditGoback()">Go Back</button>
+  </div>
+</div>

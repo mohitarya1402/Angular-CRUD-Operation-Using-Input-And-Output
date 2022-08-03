@@ -1,0 +1,12 @@
+div{
+  padding: 5px;
+}
+.personLable{
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black;
+}
+.personDataStyle{
+  font-size: 1.3rem;
+  color: rgb(0, 0, 0);
+}
